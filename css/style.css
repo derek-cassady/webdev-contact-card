@@ -1,0 +1,10 @@
+@import url('./reset.css');
+
+.profile-picture img {
+    width: 150px; /* Adjust the size */
+    height: 150px; /* Adjust the size */
+    object-fit: cover; /* Ensures the image is cropped to fit the container */
+    border-radius: 50%; /* Makes the image circular, optional */
+    display: block;
+    margin: 0 auto; /* Centers the image within the div */
+}
