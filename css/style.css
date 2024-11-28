@@ -1,11 +1,167 @@
 @import url('./reset.css');
 
 .profile-picture {
-    width: 150px; /* Set the size of the container */
-    height: 150px; /* Set the size of the container */
-    background-image: url('/images/Bateman, Patrick_Headshot.jpeg'); /* Path to your image */
-    background-size: cover; /* Ensures the image covers the container without distortion */
-    background-position: center top; /* Adjust the visible portion of the image */
-    border-radius: 50%; /* Makes the container circular, optional */
+    width: 150px; /* Sets size of container */
+    height: 150px; /* Sets size of container */
+    background-image: url('/images/Bateman, Patrick_Headshot.jpeg');
+    background-size: cover; /* Ensure image covers the container without distortion */
+    background-position: center top; /* Adjusts the visible portion of image */
+    border-radius: 50%; /* Makes the container circular */
     margin: 0 auto; /* Centers the container horizontally */
+}
+
+body {
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Ensure the body is full viewport */
+    margin: 0; /* Remove default body margin */
+    background-color: #f9f9f9;
+}
+
+/* Base Style (Default for small screen) */
+.contact-card {
+    width: 90%; /* Use most of the screen width on small device */
+    max-width: 499px; 
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(240, 234, 214, 1); /* "Bone" color to match movie reference */
+    background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px); /* Texture to give paper business card look */
+    background-size: 5px 5px; /* Adjust size for texture */
+    text-align: center;
+    font-family: 'Cinzel', serif; /* Apply font to the entire card */
+    font-weight: 300;
+    text-shadow:-1px -1px 2px rgba(0, 0, 0, 0.05); /* Attempt at debossed effect */
+
+}
+
+/* Base styles Stack all sections for small screen */
+.company-info {
+    display: flex;
+    flex-direction: column; /* Default stacking for small screen */
+    gap: 10px; /* Add spacing between sections */
+}
+
+.name-role {
+    text-align: center; /* Centers text */
+    margin-bottom: 20px; /* Adds space below */
+    padding: 10px 0; /* Adds padding */
+    border-bottom: 2px solid #333333; /* Adds underline for separation */
+}
+
+.name-role h2 {
+    font-size: 1.8em;
+    margin: 0; /* Removes default margin */
+    color: #333333; 
+    font-weight: bold;
+}
+
+.name-role p {
+    font-size: 1em;
+    margin: 5px 0; /* Consistent spacing */
+    color: #444444;
+    font-style: italic;
+    background-color: rgba(240, 234, 214, 1);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Large mobile or tablets (width >= 500px) */
+@media (min-width: 500px) {
+    .contact-card {
+        width: 90%; /* Use most of the screen width */
+        max-width: 767px;
+        padding: 20px;
+    }
+
+    .company-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two equal width columns */
+        column-gap: 20px; /* Space between columns */
+        row-gap: 15px; /* Space between rows */
+        justify-content: center; /* Horizontal center grid content */
+        align-content: center; /* Vertical center grid content */
+    }
+
+    .company-name, .company-address {
+        grid-column: 1 / -1; /* Spans both columns */
+        text-align: center; /* Centers the content horizontally */
+    }
+
+    .company-web {
+        grid-column: 1 / -1; /* Span both columns */
+        text-align: center; /* Center content horizontal */
+    }
+
+    .company-address {
+        grid-column: 1;
+        align-content: center; /* Vertical center grid content */
+    }
+
+    .company-contact{
+        grid-column: 2;
+        align-content: center; /* Vertically centers the grid content */
+    }
+}
+
+/* Large tablets or desktops (width >= 768px) */
+@media (min-width: 768px) {
+    .contact-card {
+        display: grid;
+        grid-template-columns: 1fr 2fr; /* Two columns: 1/3 for picture, 2/3 for info */
+        gap: 20px; /* Adds space between the picture and company info */
+        width: 90%; 
+        max-width: 1020px;
+        padding: 25px;
+    }
+
+    .profile-picture {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: center;
+        align-self: center;
+        width: 70%; /* Adjust width to container */
+        height: auto; /* Adjust height dependant on width and aspect */
+        aspect-ratio: 3 / 4;
+        border-radius: 70% / 25%; /* Shape of picture */
+        overflow: hidden; /* Keep picture in the container */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add shadow */
+    }
+    
+    .profile-picture img {
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; /* Crops image to fit container proportionally */
+    }
+
+    .company-info {
+        grid-column: 2;
+        grid-row: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 20px; /* Space between columns */
+        row-gap: 15px; /* Space between rows */
+        justify-content: center;
+        align-content: center;
+    }
+
+    .company-name, .company-address {
+        grid-column: 1 / -1; /* Span both columns */
+        text-align: center;
+    }
+
+    .company-web {
+        grid-column: 1 / -1; /* Span both columns */
+        text-align: center;
+    }
+
+    .company-address {
+        grid-column: 1;
+    }
+
+    .company-contact {
+        grid-column: 2;
+    }
 }
